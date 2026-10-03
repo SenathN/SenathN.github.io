@@ -6,6 +6,32 @@
   "tagline": "Full-stack and DevOps engineer in Malabe, Sri Lanka, with a self-taught artist's eye for form.",
   "siteUrl": "https://senathn.github.io/",
   "availability": "Open to new work",
+  "seo": {
+    "title": "Nimsara Gamage — Software Engineer, Full-Stack & DevOps | Sri Lanka",
+    "description": "Nimsara (Senath) Gamage is a full-stack and DevOps software engineer in Malabe, Sri Lanka, building Laravel, Go, NestJS and Next.js platforms and running them on Linux, Docker and Kubernetes. First Class BEng (Hons) Software Engineering.",
+    "alternateNames": [
+      "Senath Gamage"
+    ],
+    "jobTitle": "Software Engineer — Full Stack & DevOps",
+    "keywords": [
+      "Nimsara Gamage",
+      "Senath Gamage",
+      "software engineer Sri Lanka",
+      "full-stack developer Sri Lanka",
+      "DevOps engineer Sri Lanka",
+      "Laravel developer",
+      "Go developer",
+      "Next.js developer",
+      "NestJS",
+      "Kubernetes",
+      "MicroK8s",
+      "Docker",
+      "Malabe",
+      "portfolio"
+    ],
+    "googleSiteVerification": "",
+    "ogImage": "og.png"
+  },
   "hero": {
     "lineOne": "Nimsara",
     "lineTwo": "Gamage",

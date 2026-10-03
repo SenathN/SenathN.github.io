@@ -1,15 +1,12 @@
-import { site } from "../../content/site";
 import type { MetadataRoute } from "next";
+import { site } from "../../content/site";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
   return [
-    {
-      url: site.siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+    { url: site.siteUrl, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${site.siteUrl}${site.cv.file}`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
   ];
 }
