@@ -27,6 +27,11 @@
       }
     ]
   },
+  "cv": {
+    "file": "Nimsara_Gamage_CV.pdf",
+    "label": "Download CV",
+    "title": "The full picture, on one page."
+  },
   "languages": [
     {
       "name": "English",
@@ -80,7 +85,7 @@
       "label": "Model views on CGTrader"
     },
     {
-      "value": 3,
+      "value": 4,
       "suffix": "+",
       "label": "Years shipping production"
     }

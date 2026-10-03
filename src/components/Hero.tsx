@@ -32,10 +32,16 @@ export default function Hero() {
             {site.tagline}
           </p>
         </div>
-        <a href="#range" className="mono text-xs inline-flex items-center gap-3 mt-10 group link-underline">
-          {hero.cta}
-          <span className="inline-block group-hover:translate-y-1 transition-transform">↓</span>
-        </a>
+        <div className="flex items-center gap-8 mt-10">
+          <a href="#range" className="mono text-xs inline-flex items-center gap-3 group link-underline">
+            {hero.cta}
+            <span className="inline-block group-hover:translate-y-1 transition-transform">↓</span>
+          </a>
+          <a href={site.cvHref} download className="mono text-xs inline-flex items-center gap-3 group link-underline text-[var(--muted)] hover:text-[var(--ink)]">
+            {site.cv.label}
+            <span className="inline-block group-hover:translate-y-1 transition-transform">⤓</span>
+          </a>
+        </div>
       </div>
     </section>
   );
