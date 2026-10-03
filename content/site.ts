@@ -17,7 +17,6 @@ export const site = {
     { label: "Range", href: "#range" },
     { label: "Work", href: "#work" },
     { label: "Craft", href: "#craft" },
-    { label: "CV", href: "#cv" },
     { label: "Contact", href: "#contact" },
   ],
 } as const;

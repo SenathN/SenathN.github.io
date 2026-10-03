@@ -9,10 +9,16 @@ export default function Nav() {
           {site.firstName}
           <span className="text-[var(--dim)]">.GG</span>
         </a>
-        <ActiveNav items={site.nav} />
-        <a href={`mailto:${site.contact.email}`} className="md:hidden mono text-xs link-underline">
-          Contact
-        </a>
+        <div className="flex items-center gap-8">
+          <ActiveNav items={site.nav} />
+          <a
+            href={site.cvHref}
+            download
+            className="mono text-[11px] tracking-wider uppercase border border-[var(--line-strong)] px-3 py-1.5 hover:bg-white hover:text-black transition-colors"
+          >
+            CV ↓
+          </a>
+        </div>
       </nav>
     </header>
   );

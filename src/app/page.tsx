@@ -212,64 +212,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* cv */}
-        <section id="cv" className="container-px max-content py-28 md:py-40">
-          <SectionHead
-            index="05"
-            label="Curriculum vitae"
-            title={
-              <>
-                {site.cv.title.split(",")[0]}, <span className="text-[var(--dim)]">{site.cv.title.split(",").slice(1).join(",").trim()}</span>
-              </>
-            }
-          />
-          <Reveal className="grid lg:grid-cols-12 gap-10 items-start">
-            <div className="lg:col-span-4 flex flex-col gap-6">
-              <p className="text-[var(--muted)] max-w-sm">
-                Experience, skills, education and projects in a single PDF.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={site.cvHref}
-                  download
-                  className="group inline-flex items-center gap-3 bg-white text-black mono text-xs uppercase tracking-wider px-5 py-3 hover:bg-[var(--muted)] transition-colors"
-                >
-                  {site.cv.label}
-                  <Icon name="arrow" className="w-4 h-4 rotate-90" />
-                </a>
-                <a
-                  href={site.cvHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 border border-[var(--line-strong)] mono text-xs uppercase tracking-wider px-5 py-3 hover:border-white transition-colors"
-                >
-                  Open in new tab
-                  <Icon name="arrow" className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-            <div className="lg:col-span-8 hidden md:block border border-[var(--line)] bg-[var(--surface)] p-2">
-              <object
-                data={`${site.cvHref}#view=FitH&toolbar=0`}
-                type="application/pdf"
-                aria-label={`${site.name} CV`}
-                className="w-full aspect-[1/1.414] block bg-white"
-              >
-                <a href={site.cvHref} className="mono text-sm link-underline p-6 inline-block">
-                  {site.cv.label}
-                </a>
-              </object>
-            </div>
-          </Reveal>
-        </section>
-
         {/* contact */}
         <section id="contact" className="relative overflow-hidden">
           <div className="dot-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
           <div className="relative container-px max-content py-32 md:py-48">
             <Reveal>
               <p className="label mb-8">
-                <span className="text-[var(--dim)]">06/</span>Contact
+                <span className="text-[var(--dim)]">05/</span>Contact
               </p>
               <h2 className="display-xl">
                 Let&rsquo;s build
@@ -297,6 +246,12 @@ export default function Home() {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a href={site.cvHref} download className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
+                    <Icon name="arrow" className="w-4 h-4 rotate-90" />
+                    {site.cv.label}
+                  </a>
+                </li>
                 <li className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)]">
                   <Icon name="pin" className="w-4 h-4" />
                   {site.contact.location}
