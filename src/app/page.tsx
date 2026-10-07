@@ -136,6 +136,26 @@ export default function Home() {
           </div>
 
           <p className="label mt-24 mb-8">
+            <span className="text-[var(--dim)]">{"//"}</span> Education
+          </p>
+          <ol className="border-b border-[var(--line)]">
+            {site.education.map((e) => (
+              <Reveal
+                key={e.degree}
+                as="li"
+                className="row-hover border-t border-[var(--line)] py-6 md:py-8 grid md:grid-cols-12 gap-2 md:gap-6 items-baseline"
+              >
+                <p className="md:col-span-3 mono text-xs text-[var(--muted)]">{e.period}</p>
+                <div className="md:col-span-6">
+                  <p className="md:text-lg">{e.degree}</p>
+                  <p className="text-sm text-[var(--muted)]">{e.school}</p>
+                </div>
+                {e.note && <p className="md:col-span-3 mono text-[11px] text-[var(--ink)] md:text-right">{e.note}</p>}
+              </Reveal>
+            ))}
+          </ol>
+
+          <p className="label mt-24 mb-8">
             <span className="text-[var(--dim)]">{"//"}</span> Selected projects
           </p>
           <div className="grid md:grid-cols-2 gap-4">
@@ -188,21 +208,15 @@ export default function Home() {
                 </div>
               </Reveal>
 
-              <Reveal className="mt-16">
-                <p className="label mb-6">
-                  <span className="text-[var(--dim)]">{"//"}</span> Education
-                </p>
-                <ol className="border-l border-[var(--line)]">
-                  {site.education.map((e) => (
-                    <li key={e.degree} className="relative pl-6 pb-7 last:pb-0">
-                      <span className="absolute -left-[3px] top-1.5 w-[5px] h-[5px] bg-[var(--ink)]" />
-                      <p className="mono text-[11px] text-[var(--muted)]">{e.period}</p>
-                      <p className="mt-1">{e.degree}</p>
-                      <p className="text-sm text-[var(--muted)]">{e.school}</p>
-                      {e.note && <p className="mono text-[11px] mt-1.5 text-[var(--ink)]">{e.note}</p>}
-                    </li>
-                  ))}
-                </ol>
+              <Reveal className="mt-10">
+                <a
+                  href={site.art.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mono text-[11px] tracking-wider uppercase inline-flex items-center gap-3 border border-[var(--line-strong)] px-4 py-2.5 hover:bg-white hover:text-black transition-colors"
+                >
+                  View portfolio on CGTrader ↗
+                </a>
               </Reveal>
             </div>
 

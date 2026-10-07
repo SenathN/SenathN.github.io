@@ -81,7 +81,7 @@ const jsonLd = {
       url: siteUrl,
       image: ogImage,
       email: `mailto:${site.contact.email}`,
-      sameAs: site.contact.socials.map((s) => s.url),
+      sameAs: [...site.contact.socials.map((s) => s.url), site.art.url],
       address: { "@type": "PostalAddress", addressLocality: "Malabe", addressCountry: "LK" },
       worksFor: { "@type": "Organization", name: site.experience[0].company },
       alumniOf: site.education.map((e) => ({ "@type": "EducationalOrganization", name: e.school })),

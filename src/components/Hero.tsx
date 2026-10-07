@@ -5,7 +5,7 @@ import { site } from "../../content/site";
 export default function Hero() {
   const { hero } = site;
   return (
-    <section className="relative min-h-[100svh] w-full overflow-hidden flex flex-col">
+    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden flex flex-col">
       <div className="hero-poster">
         <WavePoster />
       </div>

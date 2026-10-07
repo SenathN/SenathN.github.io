@@ -13,7 +13,7 @@ export const site = {
   ...profile,
   cvHref,
   nav: [
-    { label: "Home", href: "#main" },
+    { label: "Home", href: "#home" },
     { label: "Range", href: "#range" },
     { label: "Work", href: "#work" },
     { label: "Craft", href: "#craft" },

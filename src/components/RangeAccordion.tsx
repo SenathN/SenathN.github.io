@@ -28,8 +28,9 @@ export default function RangeAccordion() {
                 setOpenId(panel.id);
               }
             }}
-            className="range-panel relative cursor-pointer border-b md:border-b-0 md:border-r last:border-0 border-[var(--line)] flex flex-col p-6 md:p-8 min-w-0 overflow-hidden"
-            style={{ flexGrow: isOpen ? 5 : 1, flexBasis: 0 }}
+            className={`range-panel relative cursor-pointer border-b md:border-b-0 md:border-r last:border-0 border-[var(--line)] flex flex-col p-6 md:p-8 min-w-0 overflow-hidden md:basis-0 ${
+              isOpen ? "md:grow-[5]" : "md:grow"
+            }`}
           >
             <div className="flex items-center justify-between gap-4">
               <span className="label">{String(i + 1).padStart(2, "0")}</span>
