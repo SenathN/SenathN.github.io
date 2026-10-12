@@ -63,7 +63,13 @@ export const metadata: Metadata = {
     : {}),
 };
 
-export const viewport = { themeColor: "#000000", colorScheme: "dark" };
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
+  colorScheme: "dark light",
+};
 
 const personId = `${siteUrl}#person`;
 const jsonLd = {

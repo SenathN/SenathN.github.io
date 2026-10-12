@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Monochrome system: black, white and four greys. Nothing else. */
+/* Monochrome system: black, white and four greys. Nothing else.
+   Dark is the base; light applies when chosen or, with no choice stored,
+   when the OS prefers it. ThemeScript sets data-theme before first paint;
+   the media query covers visitors without JS. */
 :root {
   --bg: #000000;
+  --bg-rgb: 0, 0, 0;
+  --fg-rgb: 255, 255, 255;
   --surface: #0a0a0a;
   --ink: #f2f2f2;
   --muted: #8a8a8a;
@@ -12,6 +17,34 @@
   --line: rgba(255, 255, 255, 0.1);
   --line-strong: rgba(255, 255, 255, 0.22);
   color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-rgb: 255, 255, 255;
+  --fg-rgb: 0, 0, 0;
+  --surface: #f5f5f5;
+  --ink: #0d0d0d;
+  --muted: #666666;
+  --dim: #a8a8a8;
+  --line: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.22);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: #ffffff;
+    --bg-rgb: 255, 255, 255;
+    --fg-rgb: 0, 0, 0;
+    --surface: #f5f5f5;
+    --ink: #0d0d0d;
+    --muted: #666666;
+    --dim: #a8a8a8;
+    --line: rgba(0, 0, 0, 0.1);
+    --line-strong: rgba(0, 0, 0, 0.22);
+    color-scheme: light;
+  }
 }
 
 * {
@@ -30,8 +63,8 @@ body {
 }
 
 ::selection {
-  background: #fff;
-  color: #000;
+  background: var(--ink);
+  color: var(--bg);
 }
 
 /* ---------- type ---------- */
@@ -95,7 +128,7 @@ body {
 
 /* faint dot grid, faded at the edges */
 .dot-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(var(--fg-rgb), 0.09) 1px, transparent 1px);
   background-size: 22px 22px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
 }
@@ -103,7 +136,7 @@ body {
 /* ---------- nav ---------- */
 
 .nav-glass {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.55));
+  background: linear-gradient(to bottom, rgba(var(--bg-rgb), 0.85), rgba(var(--bg-rgb), 0.55));
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
 }
@@ -141,6 +174,20 @@ body {
 .link-underline:hover,
 .link-underline:focus-visible {
   background-size: 100% 1px;
+}
+
+/* ---------- theme toggle ---------- */
+
+/* the toggle only works with JS; the icon shows the mode you'd switch to */
+html:not(.js) .theme-toggle {
+  display: none;
+}
+.theme-toggle .icon-moon,
+:root[data-theme="light"] .theme-toggle .icon-sun {
+  display: none;
+}
+:root[data-theme="light"] .theme-toggle .icon-moon {
+  display: block;
 }
 
 /* ---------- hero ---------- */
@@ -258,7 +305,7 @@ section:has(canvas) .hero-poster {
   inset: 0;
   z-index: -1;
   opacity: 0;
-  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.07), transparent 60%);
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(var(--fg-rgb), 0.07), transparent 60%);
   transition: opacity 0.3s;
 }
 .spotlight:hover {
@@ -294,7 +341,7 @@ section:has(canvas) .hero-poster {
 }
 
 .hatch {
-  background-image: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 10px);
+  background-image: repeating-linear-gradient(-45deg, rgba(var(--fg-rgb), 0.05) 0 1px, transparent 1px 10px);
 }
 
 /* ---------- wire cube ---------- */
@@ -319,8 +366,8 @@ section:has(canvas) .hero-poster {
 .cube-face {
   position: absolute;
   inset: 0;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  background-image: radial-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+  border: 1px solid rgba(var(--fg-rgb), 0.55);
+  background-image: radial-gradient(rgba(var(--fg-rgb), 0.25) 1px, transparent 1px);
   background-size: 14px 14px;
   background-position: 7px 7px;
 }
@@ -333,7 +380,7 @@ section:has(canvas) .hero-poster {
 .cube-core {
   position: absolute;
   inset: 32%;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(var(--fg-rgb), 0.35);
   transform: rotateX(45deg) rotateY(45deg);
 }
 .cube-shadow {
@@ -342,7 +389,7 @@ section:has(canvas) .hero-poster {
   width: 55%;
   height: 10%;
   border-radius: 50%;
-  background: radial-gradient(rgba(255, 255, 255, 0.08), transparent 70%);
+  background: radial-gradient(rgba(var(--fg-rgb), 0.08), transparent 70%);
 }
 
 /* ---------- range ---------- */
@@ -366,8 +413,8 @@ section:has(canvas) .hero-poster {
   left: -9999px;
   top: 0;
   z-index: 100;
-  background: #fff;
-  color: #000;
+  background: var(--ink);
+  color: var(--bg);
   padding: 0.75rem 1.25rem;
 }
 .skip-link:focus {
@@ -375,7 +422,7 @@ section:has(canvas) .hero-poster {
 }
 
 :focus-visible {
-  outline: 1px solid #fff;
+  outline: 1px solid var(--ink);
   outline-offset: 4px;
 }
 

@@ -30,18 +30,20 @@ const vertexShader = /* glsl */ `
     gl_Position = projectionMatrix * mv;
     gl_PointSize = uSize * (1.0 + h * 0.8) * (6.0 / -mv.z);
 
-    // crests read brighter, outer rings fade into the black
+    // crests read brighter, outer rings fade into the background
     vAlpha = (0.35 + h * 1.4) * (1.0 - aRing * 0.55);
   }
 `;
 
 const fragmentShader = /* glsl */ `
   precision mediump float;
+  uniform vec3 uColor;
+  uniform float uGain;
   varying float vAlpha;
   void main() {
     vec2 c = gl_PointCoord - 0.5;
     if (dot(c, c) > 0.25) discard;
-    gl_FragColor = vec4(vec3(1.0), clamp(vAlpha, 0.06, 0.95));
+    gl_FragColor = vec4(uColor, clamp(vAlpha * uGain, 0.06 * uGain, 0.95));
   }
 `;
 
@@ -87,6 +89,7 @@ export default function DotWave() {
     renderer.domElement.style.opacity = "0";
     renderer.domElement.style.transition = "opacity 1.6s ease";
 
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 50);
     camera.position.set(0, 3.4, 6.2);
@@ -100,10 +103,32 @@ export default function DotWave() {
         uTime: { value: 0 },
         uSize: { value: 2.4 * dpr },
         uPointer: { value: new THREE.Vector2() },
+        uColor: { value: new THREE.Color() },
+        uGain: { value: 1 },
       },
       transparent: true,
       depthWrite: false,
     });
+    // dots take the ink colour, so they flip with the theme. Dark dots on white
+    // read far fainter than white on black at the same alpha, so light mode
+    // gets a stronger gain and slightly larger points.
+    const root = document.documentElement;
+    let light = false;
+    const setColor = () => {
+      const ink = getComputedStyle(root).getPropertyValue("--ink").trim() || "#f2f2f2";
+      (material.uniforms.uColor.value as THREE.Color).set(ink);
+      light = root.dataset.theme === "light";
+      material.uniforms.uGain.value = light ? 1.5 : 1;
+      material.uniforms.uSize.value = (light ? 2.7 : 2.4) * dpr;
+    };
+    setColor();
+    const themeObserver = new MutationObserver(() => {
+      setColor();
+      // reduced motion stops the loop after one frame, so redraw by hand
+      if (reduced) renderer.render(scene, camera);
+    });
+    themeObserver.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
     const points = new THREE.Points(geometry, material);
     points.position.set(1.6, 0, 0);
     points.rotation.z = -0.12;
@@ -137,7 +162,6 @@ export default function DotWave() {
     renderer.domElement.addEventListener("webglcontextlost", onLost);
     renderer.domElement.addEventListener("webglcontextrestored", onRestored);
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0, last = performance.now(), phase = 0, frames = 0, sum = 0, shown = false;
 
     const tick = (t: number) => {
@@ -151,7 +175,7 @@ export default function DotWave() {
         if (++frames === 60 && sum / 60 > 24 && dpr > 1) {
           dpr = 1;
           renderer.setPixelRatio(dpr);
-          material.uniforms.uSize.value = 2.4;
+          material.uniforms.uSize.value = light ? 2.7 : 2.4;
           resize();
         }
       }
@@ -172,6 +196,7 @@ export default function DotWave() {
       cancelAnimationFrame(raf);
       ro.disconnect();
       io.disconnect();
+      themeObserver.disconnect();
       window.removeEventListener("pointermove", onMove);
       geometry.dispose();
       material.dispose();

@@ -213,7 +213,7 @@ export default function Home() {
                   href={site.art.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mono text-[11px] tracking-wider uppercase inline-flex items-center gap-3 border border-[var(--line-strong)] px-4 py-2.5 hover:bg-white hover:text-black transition-colors"
+                  className="mono text-[11px] tracking-wider uppercase inline-flex items-center gap-3 border border-[var(--line-strong)] px-4 py-2.5 hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors"
                 >
                   View portfolio on CGTrader ↗
                 </a>
@@ -247,7 +247,7 @@ export default function Home() {
                 className="group inline-flex items-center gap-4 font-condensed font-bold text-[clamp(1.4rem,4.4vw,3.5rem)] break-all"
               >
                 <span className="link-underline">{site.contact.email}</span>
-                <span className="grid place-items-center shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full border border-[var(--line-strong)] group-hover:bg-white group-hover:text-black transition-colors">
+                <span className="grid place-items-center shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full border border-[var(--line-strong)] group-hover:bg-[var(--ink)] group-hover:text-[var(--bg)] transition-colors">
                   <Icon name="arrow" className="w-5 h-5 md:w-6 md:h-6 group-hover:rotate-45 transition-transform duration-300" />
                 </span>
               </a>

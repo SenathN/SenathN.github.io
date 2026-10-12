@@ -191,3 +191,37 @@ export function ActiveNav({ items }: { items: readonly { label: string; href: st
     </ul>
   );
 }
+
+// Flips between light and dark. Picking the mode the OS already prefers clears
+// the stored choice, so the site goes back to following the system setting.
+// Both icons are rendered; CSS shows the right one, so SSR markup never differs.
+export function ThemeToggle() {
+  const toggle = () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === "light" ? "dark" : "light";
+    root.dataset.theme = next;
+    const system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+    try {
+      if (next === system) localStorage.removeItem("theme");
+      else localStorage.setItem("theme", next);
+    } catch {}
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+      className="theme-toggle grid place-items-center w-8 h-8 border border-[var(--line-strong)] text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
+    >
+      <svg viewBox="0 0 24 24" className="icon-sun w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" />
+      </svg>
+      <svg viewBox="0 0 24 24" className="icon-moon w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" />
+      </svg>
+    </button>
+  );
+}
