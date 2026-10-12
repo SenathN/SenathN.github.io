@@ -10,7 +10,7 @@ function SectionHead({ index, label, title }: { index: string; label: string; ti
   return (
     <Reveal className="mb-14 md:mb-20">
       <p className="label mb-5">
-        <span className="text-[var(--dim)]">{index}/</span>
+        <span className="text-[var(--accent)]">{index}/</span>
         {label}
       </p>
       <h2 className="display-lg max-w-4xl">{title}</h2>
@@ -46,7 +46,7 @@ export default function Home() {
             label="Range"
             title={
               <>
-                One engineer, <span className="text-[var(--dim)]">four disciplines.</span>
+                One engineer, <span className="text-[var(--accent)]">four disciplines.</span>
               </>
             }
           />
@@ -61,10 +61,10 @@ export default function Home() {
           <div className="relative container-px max-content py-28 md:py-40">
             <Reveal>
               <p className="label mb-8">
-                <span className="text-[var(--dim)]">{"//"}</span> About
+                <span className="text-[var(--accent)]">{"//"}</span> About
               </p>
               <p className="display-lg max-w-5xl">
-                {site.statement[0]} <span className="text-[var(--dim)]">{site.statement[1]}</span>
+                {site.statement[0]} <span className="text-[var(--muted)]">{site.statement[1]}</span>
               </p>
             </Reveal>
 
@@ -104,7 +104,7 @@ export default function Home() {
             label="Experience"
             title={
               <>
-                Where I&rsquo;ve <span className="text-[var(--dim)]">shipped.</span>
+                Where I&rsquo;ve <span className="text-[var(--accent)]">shipped.</span>
               </>
             }
           />
@@ -136,7 +136,7 @@ export default function Home() {
           </div>
 
           <p className="label mt-24 mb-8">
-            <span className="text-[var(--dim)]">{"//"}</span> Education
+            <span className="text-[var(--accent)]">{"//"}</span> Education
           </p>
           <ol className="border-b border-[var(--line)]">
             {site.education.map((e) => (
@@ -156,7 +156,7 @@ export default function Home() {
           </ol>
 
           <p className="label mt-24 mb-8">
-            <span className="text-[var(--dim)]">{"//"}</span> Selected projects
+            <span className="text-[var(--accent)]">{"//"}</span> Selected projects
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {site.projects.map((p, i) => (
@@ -194,7 +194,7 @@ export default function Home() {
                 label="Craft"
                 title={
                   <>
-                    Form, <span className="text-[var(--dim)]">since 2016.</span>
+                    Form, <span className="text-[var(--accent)]">since 2016.</span>
                   </>
                 }
               />
@@ -213,7 +213,7 @@ export default function Home() {
                   href={site.art.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mono text-[11px] tracking-wider uppercase inline-flex items-center gap-3 border border-[var(--line-strong)] px-4 py-2.5 hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors"
+                  className="mono text-[11px] tracking-wider uppercase inline-flex items-center gap-3 btn-outline px-4 py-2.5"
                 >
                   View portfolio on CGTrader ↗
                 </a>
@@ -232,12 +232,12 @@ export default function Home() {
           <div className="relative container-px max-content py-32 md:py-48">
             <Reveal>
               <p className="label mb-8">
-                <span className="text-[var(--dim)]">05/</span>Contact
+                <span className="text-[var(--accent)]">05/</span>Contact
               </p>
               <h2 className="display-xl">
                 Let&rsquo;s build
                 <br />
-                <span className="text-[var(--dim)]">something.</span>
+                <span className="text-[var(--accent)]">something.</span>
               </h2>
             </Reveal>
 
@@ -247,21 +247,21 @@ export default function Home() {
                 className="group inline-flex items-center gap-4 font-condensed font-bold text-[clamp(1.4rem,4.4vw,3.5rem)] break-all"
               >
                 <span className="link-underline">{site.contact.email}</span>
-                <span className="grid place-items-center shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full border border-[var(--line-strong)] group-hover:bg-[var(--ink)] group-hover:text-[var(--bg)] transition-colors">
+                <span className="grid place-items-center shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full border border-[var(--line-strong)] group-hover:bg-[var(--accent)] group-hover:border-[var(--accent)] group-hover:text-[var(--on-accent)] transition-colors">
                   <Icon name="arrow" className="w-5 h-5 md:w-6 md:h-6 group-hover:rotate-45 transition-transform duration-300" />
                 </span>
               </a>
               <ul className="flex flex-col gap-3">
                 {site.contact.socials.map((s) => (
                   <li key={s.url}>
-                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                       <Icon name={s.icon} className="w-4 h-4" />
                       {s.handle}
                     </a>
                   </li>
                 ))}
                 <li>
-                  <a href={site.cvHref} download className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--ink)] transition-colors">
+                  <a href={site.cvHref} download className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--accent)] transition-colors">
                     <Icon name="arrow" className="w-4 h-4 rotate-90" />
                     {site.cv.label}
                   </a>
@@ -272,7 +272,7 @@ export default function Home() {
                 </li>
                 {site.contact.showPhone && (
                   <li>
-                    <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--ink)]">
+                    <a href={`tel:${site.contact.phone.replace(/\s/g, "")}`} className="mono text-sm inline-flex items-center gap-3 text-[var(--muted)] hover:text-[var(--accent)]">
                       <Icon name="phone" className="w-4 h-4" />
                       {site.contact.phone}
                     </a>

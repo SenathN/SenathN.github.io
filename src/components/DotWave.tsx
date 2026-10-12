@@ -12,6 +12,7 @@ const vertexShader = /* glsl */ `
   uniform vec2 uPointer;
   attribute float aRing;   // 0 inner .. 1 outer
   varying float vAlpha;
+  varying float vCrest;
 
   void main() {
     vec3 p = position;
@@ -32,18 +33,22 @@ const vertexShader = /* glsl */ `
 
     // crests read brighter, outer rings fade into the background
     vAlpha = (0.35 + h * 1.4) * (1.0 - aRing * 0.55);
+    // blue only where the swell peaks, so the accent traces the curves
+    vCrest = smoothstep(0.12, 0.45, h);
   }
 `;
 
 const fragmentShader = /* glsl */ `
   precision mediump float;
   uniform vec3 uColor;
+  uniform vec3 uAccent;
   uniform float uGain;
   varying float vAlpha;
+  varying float vCrest;
   void main() {
     vec2 c = gl_PointCoord - 0.5;
     if (dot(c, c) > 0.25) discard;
-    gl_FragColor = vec4(uColor, clamp(vAlpha * uGain, 0.06 * uGain, 0.95));
+    gl_FragColor = vec4(mix(uColor, uAccent, vCrest), clamp(vAlpha * uGain, 0.06 * uGain, 0.95));
   }
 `;
 
@@ -104,19 +109,23 @@ export default function DotWave() {
         uSize: { value: 2.4 * dpr },
         uPointer: { value: new THREE.Vector2() },
         uColor: { value: new THREE.Color() },
+        uAccent: { value: new THREE.Color() },
         uGain: { value: 1 },
       },
       transparent: true,
       depthWrite: false,
     });
-    // dots take the ink colour, so they flip with the theme. Dark dots on white
+    // dots take the ink colour with accent crests, so they flip with the theme. Dark dots on white
     // read far fainter than white on black at the same alpha, so light mode
     // gets a stronger gain and slightly larger points.
     const root = document.documentElement;
     let light = false;
     const setColor = () => {
-      const ink = getComputedStyle(root).getPropertyValue("--ink").trim() || "#f2f2f2";
+      const css = getComputedStyle(root);
+      const ink = css.getPropertyValue("--ink").trim() || "#f8fafc";
+      const accent = css.getPropertyValue("--accent").trim() || "#3282f6";
       (material.uniforms.uColor.value as THREE.Color).set(ink);
+      (material.uniforms.uAccent.value as THREE.Color).set(accent);
       light = root.dataset.theme === "light";
       material.uniforms.uGain.value = light ? 1.5 : 1;
       material.uniforms.uSize.value = (light ? 2.7 : 2.4) * dpr;

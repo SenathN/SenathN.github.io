@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="relative z-10 flex-1 container-px max-content w-full flex flex-col justify-center pt-28">
         <h1 className="display-xl">
           <span className="block hero-line">{hero.lineOne}</span>
-          <span className="relative block hero-line hero-line-2 text-[var(--dim)]">
+          <span className="relative block hero-line hero-line-2 text-[var(--accent)]">
             <span className="caret" aria-hidden="true" />
             {hero.lineTwo}
           </span>
@@ -26,18 +26,18 @@ export default function Hero() {
         <div className="rule" />
         <div className="grid md:grid-cols-2 gap-10 pt-8">
           <p className="mono text-sm md:text-base">
-            <span className="text-[var(--dim)]">{"//"}</span>&nbsp;&nbsp;{hero.kicker}
+            <span className="text-[var(--accent)]">{"//"}</span>&nbsp;&nbsp;{hero.kicker}
           </p>
           <p className="mono text-xs md:text-sm leading-relaxed text-[var(--muted)] max-w-md md:justify-self-end">
             {site.tagline}
           </p>
         </div>
         <div className="flex items-center gap-8 mt-10">
-          <a href="#range" className="mono text-xs inline-flex items-center gap-3 group link-underline">
+          <a href="#range" className="mono text-xs inline-flex items-center gap-3 group link-underline text-[var(--accent)]">
             {hero.cta}
             <span className="inline-block group-hover:translate-y-1 transition-transform">↓</span>
           </a>
-          <a href={site.cvHref} download className="mono text-xs inline-flex items-center gap-3 group link-underline text-[var(--muted)] hover:text-[var(--ink)]">
+          <a href={site.cvHref} download className="mono text-xs inline-flex items-center gap-3 group link-underline text-[var(--muted)] hover:text-[var(--accent)]">
             {site.cv.label}
             <span className="inline-block group-hover:translate-y-1 transition-transform">⤓</span>
           </a>

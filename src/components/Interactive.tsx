@@ -213,7 +213,7 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label="Toggle dark mode"
       title="Toggle dark mode"
-      className="theme-toggle grid place-items-center w-8 h-8 border border-[var(--line-strong)] text-[var(--muted)] hover:text-[var(--ink)] transition-colors"
+      className="theme-toggle btn-outline grid place-items-center w-8 h-8 text-[var(--muted)]"
     >
       <svg viewBox="0 0 24 24" className="icon-sun w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
         <circle cx="12" cy="12" r="4" />

@@ -124,8 +124,18 @@
       "tools": [
         "PHP",
         "Laravel",
+        "Codeigniter",
         "Go",
-        "NestJS"
+        "Javascript",
+        "Typescript",
+        "NestJS",
+        "Next.js",
+        "Node",
+        "Express",
+        "Python",
+        "FastAPI",
+        "Java",
+        "SpringBoot"
       ],
       "color": "violet"
     },
@@ -136,8 +146,15 @@
       "statement": "Production that runs itself.",
       "tools": [
         "Linux",
+        "Networking",
         "Docker",
         "MicroK8s",
+        "Kubernetes",
+        "Gitlab",
+        "MySQL",
+        "PostgreSQL",
+        "Redis",
+        "Nginx",
         "CI/CD"
       ],
       "color": "inkTint"
@@ -151,7 +168,12 @@
         "Vue.js",
         "TypeScript",
         "Next.js",
-        "React"
+        "React",
+        "JQuery",
+        "Tailwind",
+        "React Native",
+        "Bootstrap",
+        "ShadCN"
       ],
       "color": "lilac"
     },
@@ -162,6 +184,7 @@
       "statement": "A self-taught artist's eye.",
       "tools": [
         "Blender",
+        "Substance Painter",
         "Since 2016"
       ],
       "color": "deepViolet"

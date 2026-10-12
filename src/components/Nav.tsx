@@ -16,7 +16,7 @@ export default function Nav() {
             <a
               href={site.cvHref}
               download
-              className="mono text-[11px] tracking-wider uppercase border border-[var(--line-strong)] px-3 py-1.5 hover:bg-[var(--ink)] hover:text-[var(--bg)] transition-colors"
+              className="mono text-[11px] tracking-wider uppercase btn-outline px-3 py-1.5"
             >
               CV ↓
             </a>

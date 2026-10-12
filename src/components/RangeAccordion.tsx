@@ -36,7 +36,7 @@ export default function RangeAccordion() {
               <span className="label">{String(i + 1).padStart(2, "0")}</span>
               <span
                 className={`grid place-items-center w-10 h-10 rounded-full border transition-colors duration-300 ${
-                  isOpen ? "bg-[var(--ink)] text-[var(--bg)] border-[var(--ink)]" : "border-[var(--line-strong)] text-[var(--muted)]"
+                  isOpen ? "bg-[var(--accent)] text-[var(--on-accent)] border-[var(--accent)]" : "border-[var(--line-strong)] text-[var(--muted)]"
                 }`}
               >
                 <Icon name={panel.icon} className="w-[18px] h-[18px]" />
