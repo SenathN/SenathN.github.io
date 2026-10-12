@@ -1,46 +1,117 @@
-import WavePoster from "./WavePoster";
-import HeroScene from "./HeroScene";
-import { site } from "../../content/site";
+import Iceberg from "./Iceberg";
+import WaterSheen from "./WaterSheen";
+import Contours from "./Contours";
+import { site, zoneAttrs } from "../../content/site";
+
+// Light shafts: fixed, hand-placed values so the composition never changes.
+const SHAFTS = [
+  { x: "8%", w: "7vw", r: "16deg", delay: "0s" },
+  { x: "27%", w: "3.5vw", r: "13deg", delay: "-5s" },
+  { x: "46%", w: "10vw", r: "18deg", delay: "-9s" },
+  { x: "66%", w: "4vw", r: "14deg", delay: "-3s" },
+  { x: "80%", w: "8vw", r: "20deg", delay: "-12s" },
+];
 
 export default function Hero() {
-  const { hero } = site;
+  const { hero, contact } = site;
   return (
-    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden flex flex-col">
-      <div className="hero-poster">
-        <WavePoster />
-      </div>
-      <HeroScene />
-
-      <div className="relative z-10 flex-1 container-px max-content w-full flex flex-col justify-center pt-28">
-        <h1 className="display-xl">
-          <span className="block hero-line">{hero.lineOne}</span>
-          <span className="relative block hero-line hero-line-2 text-[var(--accent)]">
-            <span className="caret" aria-hidden="true" />
-            {hero.lineTwo}
-          </span>
-        </h1>
-        <p className="mono text-xs md:text-sm mt-6 md:text-right md:pr-[8%] hero-fade">{hero.caption}</p>
-      </div>
-
-      <div className="relative z-10 container-px max-content w-full pb-10 hero-fade">
-        <div className="rule" />
-        <div className="grid md:grid-cols-2 gap-10 pt-8">
-          <p className="mono text-sm md:text-base">
-            <span className="text-[var(--accent)]">{"//"}</span>&nbsp;&nbsp;{hero.kicker}
-          </p>
-          <p className="mono text-xs md:text-sm leading-relaxed text-[var(--muted)] max-w-md md:justify-self-end">
-            {site.tagline}
-          </p>
+    <section {...zoneAttrs("home")} className="hero" aria-labelledby="hero-title">
+      <div className="wrap hero-inner">
+        <div className="hero-meta" aria-hidden="true">
+          <span>{hero.annotation}</span>
+          <span className="hidden sm:inline">{contact.coordinates}</span>
+          <span>Surface · 0 m</span>
         </div>
-        <div className="flex items-center gap-8 mt-10">
-          <a href="#range" className="mono text-xs inline-flex items-center gap-3 group link-underline text-[var(--accent)]">
-            {hero.cta}
-            <span className="inline-block group-hover:translate-y-1 transition-transform">↓</span>
+
+        <div className="hero-spacer" />
+
+        <div className="surface">
+          <div className="sky" aria-hidden="true">
+            <Contours
+              seed={12}
+              width={1600}
+              height={700}
+              cell={34}
+              levels={6}
+              scale={1.1}
+              minLength={260}
+              className="sky-chart"
+            />
+          </div>
+
+          <div className="water-light" aria-hidden="true" data-pointer-layer="-10">
+            {SHAFTS.map((s) => (
+              <span
+                key={s.x}
+                className="shaft"
+                style={{ "--x": s.x, "--w": s.w, "--r": s.r, "--delay": s.delay } as React.CSSProperties}
+              />
+            ))}
+            <span className="caustic caustic-a" />
+            <span className="caustic caustic-b" />
+          </div>
+
+          <div className="iceberg-anchor" data-pointer-layer="8">
+            <Iceberg className="iceberg" />
+          </div>
+
+          <h1 id="hero-title" className="hero-title">
+            <span className="hero-eyebrow">
+              <span className="text-[var(--ink)]">{site.name}</span>
+              <span aria-hidden="true" className="hero-eyebrow-rule" />
+              <span>{hero.eyebrow}</span>
+            </span>
+            <span className="hero-line hero-line-1">{hero.lineOne}</span>
+            {/* The second line is cut by the waterline: the copy above it is the
+                real text, the copy below is a refracted, aria-hidden echo. The
+                inner spans rise while the clips stay put, so the words surface. */}
+            <span className="hero-line-2 split">
+              <span className="split-above">
+                <span className="rise">{hero.lineTwo}</span>
+              </span>
+              <span className="split-below" aria-hidden="true">
+                <span className="rise">{hero.lineTwo}</span>
+              </span>
+            </span>
+          </h1>
+
+          <span className="waterline" aria-hidden="true" />
+          <WaterSheen className="sheen" />
+        </div>
+
+        <div className="hero-water">
+          <p className="hero-disciplines">
+            {hero.disciplines.map((d, i) => (
+              <span key={d}>
+                {i > 0 && <span aria-hidden="true" className="slash">/</span>}
+                {d}
+              </span>
+            ))}
+          </p>
+          <p className="hero-lead">{hero.lead}</p>
+          <p className="hero-intro">{hero.intro}</p>
+          <div className="hero-actions">
+            <a href="#work" className="btn-bracket">
+              <span aria-hidden="true">[</span>
+              <span className="btn-bracket-label">{hero.cta}</span>
+              <span aria-hidden="true" className="btn-bracket-arrow">↘</span>
+              <span aria-hidden="true">]</span>
+            </a>
+            <p className="availability">
+              <span className="pulse-dot" aria-hidden="true" />
+              {site.availability}
+            </p>
+          </div>
+        </div>
+
+        <div className="hero-foot" aria-hidden="true">
+          <a href="#descent" className="scroll-cue" tabIndex={-1}>
+            <span className="scroll-cue-line" />
+            Descend
           </a>
-          <a href={site.cvHref} download className="mono text-xs inline-flex items-center gap-3 group link-underline text-[var(--muted)] hover:text-[var(--accent)]">
-            {site.cv.label}
-            <span className="inline-block group-hover:translate-y-1 transition-transform">⤓</span>
-          </a>
+          <span className="hidden md:inline">
+            {contact.location} · {contact.coordinates}
+          </span>
         </div>
       </div>
     </section>

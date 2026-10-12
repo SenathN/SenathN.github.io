@@ -1,7 +1,7 @@
 import type { IconName } from "../../content/site";
 
-// One 24px grid, 1.5 stroke, round caps — every icon shares the same weight
-// so they read as a family. currentColor keeps them inside the duotone.
+// One 24px grid, 1.5 stroke, round caps: every icon shares the same weight
+// so they read as a family. currentColor keeps them inside the palette.
 const paths: Record<IconName, React.ReactNode> = {
   server: (
     <>
@@ -62,6 +62,7 @@ const paths: Record<IconName, React.ReactNode> = {
     <path d="M9 19c-4 1.3-4-2-6-2.5M15 21v-3.5a3 3 0 0 0-.85-2.35c2.85-.3 5.85-1.4 5.85-6.35A4.9 4.9 0 0 0 18.6 5.4 4.6 4.6 0 0 0 18.5 2S17.4 1.7 15 3.3a12.3 12.3 0 0 0-6 0C6.6 1.7 5.5 2 5.5 2a4.6 4.6 0 0 0-.1 3.4A4.9 4.9 0 0 0 4 8.8c0 4.9 3 6 5.85 6.35A3 3 0 0 0 9 17.5V21" />
   ),
   arrow: <path d="M7 17 17 7M8.5 7H17v8.5" />,
+  download: <path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14" />,
   phone: (
     <path d="M5 4h3.5l1.75 4.5-2.25 1.4a10 10 0 0 0 6.1 6.1l1.4-2.25L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5A16 16 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z" />
   ),

@@ -1,26 +1,20 @@
 import type { Metadata } from "next";
-import { Roboto_Condensed, JetBrains_Mono, Inter } from "next/font/google";
-import ThemeScript from "@/components/ThemeScript";
+import { Geist, IBM_Plex_Mono } from "next/font/google";
+import BootScript from "@/components/BootScript";
 import { site } from "../../content/site";
 import "./globals.css";
 
-const condensed = Roboto_Condensed({
-  weight: ["500", "700", "800"],
+// One grotesk for display and text, one restrained mono for annotations.
+const sans = Geist({
   subsets: ["latin"],
-  variable: "--font-condensed",
+  variable: "--font-sans",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const mono = IBM_Plex_Mono({
   weight: ["400", "500"],
   subsets: ["latin"],
   variable: "--font-mono",
-  display: "swap",
-});
-
-const body = Inter({
-  subsets: ["latin"],
-  variable: "--font-body",
   display: "swap",
 });
 
@@ -64,11 +58,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
-    { media: "(prefers-color-scheme: dark)", color: "#081a2b" },
-  ],
-  colorScheme: "dark light",
+  themeColor: "#03151a",
+  colorScheme: "dark",
 };
 
 const personId = `${siteUrl}#person`;
@@ -91,7 +82,7 @@ const jsonLd = {
       address: { "@type": "PostalAddress", addressLocality: "Malabe", addressCountry: "LK" },
       worksFor: { "@type": "Organization", name: site.experience[0].company },
       alumniOf: site.education.map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
-      knowsAbout: [...new Set(site.range.flatMap((r) => r.tools.filter((t) => !/since/i.test(t))))],
+      knowsAbout: [...new Set([...site.layers.flatMap((l) => l.tools), ...site.art.tools])],
       knowsLanguage: site.languages.map((l) => l.name),
     },
     {
@@ -121,15 +112,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${condensed.variable} ${mono.variable} ${body.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${sans.variable} ${mono.variable}`}>
       <head>
-        <ThemeScript />
+        <BootScript />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-sans antialiased">
         <a href="#main" className="skip-link">
           Skip to content
         </a>

@@ -8,9 +8,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        condensed: ["var(--font-condensed)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
-        body: ["var(--font-body)", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      colors: {
+        abyss: "#082f38",
+        cyan: "#43c6c9",
+        mint: "#b4e7d8",
+        mist: "#eaf3ee",
       },
     },
     screens: {

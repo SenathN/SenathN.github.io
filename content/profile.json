@@ -33,11 +33,19 @@
     "ogImage": "og.png"
   },
   "hero": {
-    "lineOne": "Nimsara",
-    "lineTwo": "Gamage",
-    "caption": "Software Engineer / DevOps",
-    "kicker": "Scalable systems. Crafted form.",
-    "cta": "Explore my work"
+    "annotation": "Depth index / 001",
+    "eyebrow": "Software engineer — full-stack & DevOps",
+    "lineOne": "Beyond",
+    "lineTwo": "the surface.",
+    "disciplines": [
+      "Backend",
+      "Infrastructure",
+      "Interfaces"
+    ],
+    "lead": "I build the systems beneath the interface.",
+    "intro": "Laravel, Go and NestJS services, the multi-tenant data models under them, and the Linux, Docker and Kubernetes they run on: designed, shipped and operated in production.",
+    "cta": "Explore selected work",
+    "kicker": "Scalable systems. Crafted form."
   },
   "contact": {
     "email": "senathngamage@gmail.com",
@@ -51,7 +59,8 @@
         "url": "https://linkedin.com/in/senath-gamage",
         "icon": "linkedin"
       }
-    ]
+    ],
+    "coordinates": "6.90° N, 79.96° E"
   },
   "cv": {
     "file": "Nimsara_Gamage_CV.pdf",
@@ -97,101 +106,152 @@
     {
       "value": 40,
       "suffix": "%",
-      "label": "Faster database queries"
-    },
-    {
-      "value": 26,
-      "suffix": "",
-      "label": "Published 3D models"
-    },
-    {
-      "value": 7.8,
-      "suffix": "K+",
-      "label": "Model views on CGTrader"
+      "label": "Faster database queries",
+      "source": "Ceylon Linux · Laravel & Go services"
     },
     {
       "value": 4,
       "suffix": "+",
-      "label": "Years shipping production"
+      "label": "Years shipping production",
+      "source": "Elevex · Ceylon Linux"
+    },
+    {
+      "value": 26,
+      "suffix": "",
+      "label": "Published 3D models",
+      "source": "CGTrader · since 2016"
+    },
+    {
+      "value": 7.8,
+      "suffix": "K+",
+      "label": "Model views",
+      "source": "CGTrader"
     }
   ],
-  "range": [
+  "layers": [
     {
-      "id": "backend",
-      "icon": "server",
-      "title": "Backend",
+      "id": "interfaces",
+      "stratum": "Surface",
+      "title": "Interfaces",
+      "statement": "Front ends people enjoy using.",
+      "detail": "The layer people actually touch: typed React, Next.js and Vue front ends, React Native on mobile, and component systems built with Tailwind and shadcn/ui.",
+      "tools": [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Vue.js",
+        "React Native",
+        "Tailwind",
+        "ShadCN",
+        "Bootstrap",
+        "jQuery"
+      ],
+      "evidence": [
+        {
+          "label": "Elevex — leads front-end and back-end delivery",
+          "href": "#log-elevex"
+        }
+      ]
+    },
+    {
+      "id": "services",
+      "stratum": "Shelf",
+      "title": "Backend services",
       "statement": "Services that stay fast as they grow.",
+      "detail": "APIs and services in PHP, Go, TypeScript, Python and Java: Laravel and Go microservices, NestJS and Express APIs, third-party integrations, and the legacy PHP that still has to keep running.",
       "tools": [
         "PHP",
         "Laravel",
-        "Codeigniter",
+        "CodeIgniter",
         "Go",
-        "Javascript",
-        "Typescript",
-        "NestJS",
-        "Next.js",
+        "JavaScript",
+        "TypeScript",
         "Node",
         "Express",
+        "NestJS",
+        "Next.js",
         "Python",
         "FastAPI",
         "Java",
-        "SpringBoot"
+        "Spring Boot"
       ],
-      "color": "violet"
+      "evidence": [
+        {
+          "label": "Ceylon Linux — Laravel and Go microservices, third-party integrations",
+          "href": "#log-ceylon-linux"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "stratum": "Slope",
+      "title": "Data & modelling",
+      "statement": "Schemas decide how far a system can grow.",
+      "detail": "Multi-tenant database design, and query work that cut database query times by 40%, across MySQL, PostgreSQL and Redis.",
+      "tools": [
+        "MySQL",
+        "PostgreSQL",
+        "Redis",
+        "Multi-tenant design",
+        "Query optimisation"
+      ],
+      "evidence": [
+        {
+          "label": "Elevex — designs multi-tenant databases",
+          "href": "#log-elevex"
+        },
+        {
+          "label": "Ceylon Linux — 40% faster database queries",
+          "href": "#log-ceylon-linux"
+        }
+      ]
     },
     {
       "id": "infrastructure",
-      "icon": "cloud",
+      "stratum": "Abyssal plain",
       "title": "Infrastructure",
       "statement": "Production that runs itself.",
+      "detail": "Owns production deployment: Linux hosts, Docker images and MicroK8s clusters, with CI/CD pipelines, Nginx and the networking underneath.",
       "tools": [
         "Linux",
         "Networking",
         "Docker",
         "MicroK8s",
         "Kubernetes",
-        "Gitlab",
-        "MySQL",
-        "PostgreSQL",
-        "Redis",
-        "Nginx",
-        "CI/CD"
+        "GitLab",
+        "CI/CD",
+        "Nginx"
       ],
-      "color": "inkTint"
+      "evidence": [
+        {
+          "label": "Elevex — production deployment on Linux, Docker and MicroK8s",
+          "href": "#log-elevex"
+        }
+      ]
     },
     {
-      "id": "interfaces",
-      "icon": "window",
-      "title": "Interfaces",
-      "statement": "Front ends people enjoy using.",
+      "id": "architecture",
+      "stratum": "Bedrock",
+      "title": "Architecture & people",
+      "statement": "The decisions everything else stands on.",
+      "detail": "Leads through code review, mentoring and architecture decisions, and brings junior developers up through review and technical interviews.",
       "tools": [
-        "Vue.js",
-        "TypeScript",
-        "Next.js",
-        "React",
-        "JQuery",
-        "Tailwind",
-        "React Native",
-        "Bootstrap",
-        "ShadCN"
+        "Architecture decisions",
+        "Code review",
+        "Mentoring",
+        "Technical interviews"
       ],
-      "color": "lilac"
-    },
-    {
-      "id": "form",
-      "icon": "cube",
-      "title": "Form",
-      "statement": "A self-taught artist's eye.",
-      "tools": [
-        "Blender",
-        "Substance Painter",
-        "Since 2016"
-      ],
-      "color": "deepViolet"
+      "evidence": [
+        {
+          "label": "Elevex — mentors junior developers",
+          "href": "#log-elevex"
+        }
+      ]
     }
   ],
   "experience": [
     {
+      "id": "log-elevex",
       "company": "Elevex Technologies (Pvt) Ltd",
       "roles": [
         {
@@ -206,6 +266,7 @@
       ]
     },
     {
+      "id": "log-ceylon-linux",
       "company": "Ceylon Linux (Pvt) Ltd",
       "roles": [
         {
@@ -226,26 +287,209 @@
   ],
   "projects": [
     {
+      "id": "work-01",
       "name": "Private project management platform",
+      "category": "Internal platform",
       "description": "Internal tool for team workflows, task tracking and role-based access.",
       "tags": [
         "Internal tool",
         "RBAC",
         "Workflows"
       ],
+      "status": "Private build — no public link",
+      "problem": null,
+      "approach": null,
+      "architecture": null,
+      "outcome": null,
+      "stack": [],
       "image": null,
-      "url": null
+      "url": null,
+      "map": {
+        "nodes": [
+          {
+            "id": "team",
+            "label": "Teams",
+            "x": 14,
+            "y": 22
+          },
+          {
+            "id": "role",
+            "label": "Roles",
+            "x": 16,
+            "y": 70
+          },
+          {
+            "id": "access",
+            "label": "Access rules",
+            "x": 46,
+            "y": 84
+          },
+          {
+            "id": "workflow",
+            "label": "Workflows",
+            "x": 50,
+            "y": 34
+          },
+          {
+            "id": "task",
+            "label": "Tasks",
+            "x": 82,
+            "y": 22
+          },
+          {
+            "id": "tracking",
+            "label": "Tracking",
+            "x": 86,
+            "y": 68
+          }
+        ],
+        "edges": [
+          [
+            "team",
+            "workflow"
+          ],
+          [
+            "workflow",
+            "task"
+          ],
+          [
+            "task",
+            "tracking"
+          ],
+          [
+            "team",
+            "role"
+          ],
+          [
+            "role",
+            "access"
+          ],
+          [
+            "access",
+            "workflow"
+          ],
+          [
+            "access",
+            "task"
+          ]
+        ]
+      }
     },
     {
+      "id": "work-02",
       "name": "Social and learning platform",
+      "category": "Social learning platform",
       "description": "Hybrid social network and LMS: course delivery, progress tracking, community.",
       "tags": [
         "LMS",
         "Social",
         "Progress tracking"
       ],
+      "status": "Private build — no public link",
+      "problem": null,
+      "approach": null,
+      "architecture": null,
+      "outcome": null,
+      "stack": [],
       "image": null,
-      "url": null
+      "url": null,
+      "map": {
+        "nodes": [
+          {
+            "id": "learner",
+            "label": "Learners",
+            "x": 50,
+            "y": 52
+          },
+          {
+            "id": "course",
+            "label": "Courses",
+            "x": 16,
+            "y": 24
+          },
+          {
+            "id": "delivery",
+            "label": "Delivery",
+            "x": 14,
+            "y": 78
+          },
+          {
+            "id": "progress",
+            "label": "Progress",
+            "x": 84,
+            "y": 80
+          },
+          {
+            "id": "community",
+            "label": "Community",
+            "x": 82,
+            "y": 20
+          }
+        ],
+        "edges": [
+          [
+            "course",
+            "delivery"
+          ],
+          [
+            "course",
+            "learner"
+          ],
+          [
+            "learner",
+            "progress"
+          ],
+          [
+            "course",
+            "progress"
+          ],
+          [
+            "learner",
+            "community"
+          ],
+          [
+            "community",
+            "course"
+          ]
+        ]
+      }
+    }
+  ],
+  "principles": [
+    {
+      "id": "problem",
+      "title": "Problem before stack",
+      "body": "Start from what has to be true for the people using the system, then choose the tools. The stack is a consequence, not a premise.",
+      "practice": "Works across PHP, Go, TypeScript, Python and Java.",
+      "glyph": "converge"
+    },
+    {
+      "id": "boundaries",
+      "title": "Clear boundaries",
+      "body": "A service, a tenant or a team should have an edge you can point to. Clean seams make a system easier to change and its failures easier to contain.",
+      "practice": "Laravel and Go microservices; multi-tenant database design.",
+      "glyph": "boundary"
+    },
+    {
+      "id": "failure",
+      "title": "Design for failure",
+      "body": "Deploys fail, networks partition, dependencies time out. Decide in advance what happens then, and make the system say so.",
+      "practice": "Owns production deployment on Linux, Docker and MicroK8s with CI/CD.",
+      "glyph": "failover"
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Make the trade-off explicit",
+      "body": "Maintainability, performance and delivery pull against each other. Choose the balance on purpose, and say which way it leans.",
+      "practice": "At Ceylon Linux: 40% faster queries alongside legacy PHP maintenance.",
+      "glyph": "balance"
+    },
+    {
+      "id": "legible",
+      "title": "Leave it legible",
+      "body": "A system is only as good as the next engineer's ability to understand and operate it. Code review and mentoring are part of the build.",
+      "practice": "Mentors junior developers through code review and technical interviews.",
+      "glyph": "untangle"
     }
   ],
   "education": [
@@ -272,6 +516,16 @@
     "count": 26,
     "caption": "Published 3D models on CGTrader",
     "detail": "7.8K+ views, since 2016.",
-    "url": "https://www.cgtrader.com/designers/senath-gamage"
+    "url": "https://www.cgtrader.com/designers/senath-gamage",
+    "tools": [
+      "Blender",
+      "Substance Painter"
+    ],
+    "statement": "A self-taught artist's eye."
+  },
+  "closing": {
+    "lineOne": "There's more",
+    "lineTwo": "beneath.",
+    "copy": "Have a difficult problem worth solving? Let's explore it."
   }
 }
