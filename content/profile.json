@@ -226,6 +226,20 @@
   ],
   "projects": [
     {
+      "name": "JEEZRO business automation system",
+      "description": "Client system for a Sri Lankan freeze-dried snack brand: wholesale storefront, WhatsApp quote and distributor flows, and timed sales campaigns.",
+      "tags": [
+        "Client work",
+        "Business automation",
+        "E-commerce",
+        "Live"
+      ],
+      "images": [
+        "projects/jeezro.png"
+      ],
+      "url": "https://jeezro.sudo-es.com/"
+    },
+    {
       "name": "Private project management platform",
       "description": "Internal tool for team workflows, task tracking and role-based access.",
       "tags": [
@@ -233,18 +247,26 @@
         "RBAC",
         "Workflows"
       ],
-      "image": null,
+      "images": [
+        "projects/pm-admin.png",
+        "projects/pm-project.png",
+        "projects/pm-tasks.png",
+        "projects/pm-dashboard.png",
+        "projects/pm-notifications.png"
+      ],
       "url": null
     },
     {
-      "name": "Social and learning platform",
-      "description": "Hybrid social network and LMS: course delivery, progress tracking, community.",
+      "name": "Management and inquiry site for a modelling agency",
+      "description": "Talent roster, events, academy and gallery for a modelling agency, with model applications, client inquiries and an admin side to manage them.",
       "tags": [
-        "LMS",
-        "Social",
-        "Progress tracking"
+        "Client work",
+        "Talent management",
+        "Inquiries"
       ],
-      "image": null,
+      "images": [
+        "projects/agency-admin.png"
+      ],
       "url": null
     }
   ],

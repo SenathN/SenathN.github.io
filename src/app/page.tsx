@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import RangeAccordion from "@/components/RangeAccordion";
 import Footer from "@/components/Footer";
 import Icon from "@/components/Icon";
-import { Reveal, CountUp, Spotlight, WireCube } from "@/components/Interactive";
+import { Reveal, CountUp, Spotlight, WireCube, Gallery } from "@/components/Interactive";
 import { site } from "../../content/site";
 
 function SectionHead({ index, label, title }: { index: string; label: string; title: React.ReactNode }) {
@@ -162,15 +162,29 @@ export default function Home() {
             {site.projects.map((p, i) => (
               <Reveal key={p.name} delay={i * 120}>
                 <Spotlight className="h-full flex flex-col">
-                  <div className="hatch aspect-[16/9] border-b border-[var(--line)] grid place-items-center">
-                    <span className="label">Screenshots coming soon</span>
-                  </div>
+                  {p.images.length > 0 ? (
+                    <Gallery images={p.images} alt={p.name} className="aspect-[16/9] border-b border-[var(--line)]" />
+                  ) : (
+                    <div className="hatch aspect-[16/9] border-b border-[var(--line)] grid place-items-center">
+                      <span className="label">Screenshots coming soon</span>
+                    </div>
+                  )}
                   <div className="p-6 md:p-8 flex flex-col gap-5 flex-1">
                     <div className="flex items-start justify-between gap-6">
                       <h3 className="display-md">{p.name}</h3>
                       <span className="mono text-xs text-[var(--dim)]">{String(i + 1).padStart(2, "0")}</span>
                     </div>
                     <p className="text-[var(--muted)]">{p.description}</p>
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mono text-xs text-[var(--accent)] hover:underline w-fit"
+                      >
+                        Visit live site ↗
+                      </a>
+                    )}
                     <ul className="flex flex-wrap gap-2 mt-auto">
                       {p.tags.map((t) => (
                         <li key={t} className="mono text-[11px] text-[var(--muted)] border border-[var(--line)] px-2.5 py-1">

@@ -100,6 +100,40 @@ export function Spotlight({ children, className = "" }: { children: React.ReactN
   );
 }
 
+// Screenshot carousel for project cards; arrows and counter only when there's more than one.
+export function Gallery({ images, alt, className = "" }: { images: readonly string[]; alt: string; className?: string }) {
+  const [i, setI] = useState(0);
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const step = (d: number) => setI((n) => (n + d + images.length) % images.length);
+  const btn =
+    "absolute top-1/2 -translate-y-1/2 grid place-items-center size-9 bg-[rgba(var(--bg-rgb),0.85)] border border-[var(--line)] text-[var(--ink)] opacity-0 group-hover:opacity-100 focus-visible:opacity-100 transition-opacity";
+
+  return (
+    <div className={`group relative ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- static export, images are unoptimized */}
+      <img
+        src={`${base}/${images[i]}`}
+        alt={`${alt} screenshot ${i + 1} of ${images.length}`}
+        loading="lazy"
+        className="size-full object-cover object-top"
+      />
+      {images.length > 1 && (
+        <>
+          <button type="button" aria-label="Previous screenshot" onClick={() => step(-1)} className={`${btn} left-3`}>
+            ‹
+          </button>
+          <button type="button" aria-label="Next screenshot" onClick={() => step(1)} className={`${btn} right-3`}>
+            ›
+          </button>
+          <span className="absolute bottom-3 right-3 mono text-[11px] bg-[rgba(var(--bg-rgb),0.85)] border border-[var(--line)] px-2 py-0.5">
+            {i + 1}/{images.length}
+          </span>
+        </>
+      )}
+    </div>
+  );
+}
+
 // Line-art cube built from CSS 3D faces: slow idle spin, tilts toward pointer.
 export function WireCube() {
   const ref = useRef<HTMLDivElement>(null);
